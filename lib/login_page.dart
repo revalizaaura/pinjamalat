@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import 'home_page.dart';
-import 'main.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,34 +20,27 @@ class _LoginPageState extends State<LoginPage> {
     String email = emailController.text.trim();
     String password = passwordController.text;
 
-    // Cek apakah sudah ada akun yang terdaftar
-    if (registeredUser == null) {
+    // Cek apakah email dan password sudah diisi
+    if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text(
-            'Akun belum terdaftar. Silakan daftar terlebih dahulu.',
-          ),
+          content: Text('Email dan password harus diisi!'),
         ),
       );
       return;
     }
 
-    // Cek email dan password menggunakan function dari class User
-    if (!registeredUser!.login(email, password)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Email atau password salah!'),
-        ),
-      );
-      return;
-    }
+    // Nama user diambil dari bagian sebelum tanda @
+    // Contoh:
+    // andi@gmail.com -> andi
+    String namaUser = email.split('@')[0];
 
-    // Jika login berhasil
+    // Jika login berhasil, langsung masuk ke HomePage
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => HomePage(
-          namaUser: registeredUser!.nama,
+          namaUser: namaUser,
         ),
       ),
     );
@@ -107,7 +100,9 @@ class _LoginPageState extends State<LoginPage> {
 
                   const SizedBox(height: 35),
 
+                  // =========================
                   // GAMBAR ALAT
+                  // =========================
                   Wrap(
                     spacing: 14,
                     runSpacing: 14,
@@ -176,7 +171,9 @@ class _LoginPageState extends State<LoginPage> {
 
                       const SizedBox(height: 35),
 
+                      // =========================
                       // EMAIL
+                      // =========================
                       const Text(
                         'Email',
                         style: TextStyle(
@@ -188,6 +185,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       TextField(
                         controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           hintText: 'Masukkan email',
                           prefixIcon: const Icon(
@@ -201,7 +199,9 @@ class _LoginPageState extends State<LoginPage> {
 
                       const SizedBox(height: 20),
 
+                      // =========================
                       // PASSWORD
+                      // =========================
                       const Text(
                         'Password',
                         style: TextStyle(
@@ -239,7 +239,9 @@ class _LoginPageState extends State<LoginPage> {
 
                       const SizedBox(height: 30),
 
+                      // =========================
                       // TOMBOL MASUK
+                      // =========================
                       SizedBox(
                         width: double.infinity,
                         height: 52,
