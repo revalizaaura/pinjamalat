@@ -83,10 +83,13 @@ class AboutMePage extends StatelessWidget {
                           ),
                         ),
 
-                        child: const Icon(
-                          Icons.person,
-                          size: 75,
-                          color: Colors.white,
+                        child: ClipOval (
+                          child: Image.asset(
+                            'assets/foto_about_me.jpeg',
+                            width: 75,
+                            height: 75,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
 
