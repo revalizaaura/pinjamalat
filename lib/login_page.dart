@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_page.dart';
+import 'main.dart';
+import 'model/user.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool hidePassword = true;
 
-  void login() {
+  Future<void> login() async {
     String email = emailController.text.trim();
     String password = passwordController.text;
 
@@ -30,12 +33,48 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    // Nama user diambil dari bagian sebelum tanda @
-    // Contoh:
-    // andi@gmail.com -> andi
-    String namaUser = email.split('@')[0];
+    // Ambil akun yang tersimpan saat register
+    final prefs = await SharedPreferences.getInstance();
+    final savedEmail = prefs.getString('email');
 
-    // Jika login berhasil, langsung masuk ke HomePage
+    if (savedEmail == null) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Belum ada akun. Silakan daftar dulu.'),
+        ),
+      );
+      return;
+    }
+
+    final user = User(
+      nama: prefs.getString('nama') ?? '',
+      email: savedEmail,
+      nomorHp: prefs.getString('nomorHp') ?? '',
+      password: prefs.getString('password') ?? '',
+    );
+
+    // Cek email dan password dengan function login() milik class User
+    if (!user.login(email, password)) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Email atau password salah!'),
+        ),
+      );
+      return;
+    }
+
+    // Simpan user yang sedang login (dipakai di DetailAlatPage)
+    registeredUser = user;
+
+    // Nama user: pakai nama saat daftar, kalau kosong ambil dari email
+    String namaUser =
+        user.nama.isNotEmpty ? user.nama : email.split('@')[0];
+
+    if (!mounted) return;
+
+    // Jika login berhasil, masuk ke HomePage
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(

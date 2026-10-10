@@ -60,6 +60,12 @@ flutter:
 
   assets:
   - assets/foto_about_me.jpeg
+  - assets/fotolaptop.jpeg
+  - assets/fotokamera.jpeg
+  - assets/fotoearphone.jpeg
+  - assets/fotospeaker.jpeg
+  - assets/fotoproyektor.jpeg
+
 
 
   # To add assets to your application, add an assets section, like this:

@@ -29,36 +29,31 @@ AlatElektronik(
 nama: 'Laptop',
 kategori: 'Komputer',
 harga: 50000,
-gambar:
-'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80',
+gambar: 'assets/fotolaptop.jpeg',
 ),
 AlatElektronik(
 nama: 'Kamera',
 kategori: 'Fotografi',
 harga: 75000,
-gambar:
-'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+gambar: 'assets/fotokamera.jpeg',
 ),
 AlatElektronik(
 nama: 'Earphone',
 kategori: 'Audio',
 harga: 20000,
-gambar:
-'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80',
+gambar: 'assets/fotoearphone.jpeg',
 ),
 AlatElektronik(
 nama: 'Speaker',
 kategori: 'Audio',
 harga: 30000,
-gambar:
-'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80',
+gambar: 'assets/fotospeaker.jpeg',
 ),
 AlatElektronik(
 nama: 'Proyektor',
 kategori: 'Presentasi',
 harga: 40000,
-gambar:
-'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80',
+gambar: 'assets/fotoproyektor.jpeg',
 ),
 ];
 

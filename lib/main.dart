@@ -3,19 +3,11 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'model/user.dart';
 
+// Diisi saat user berhasil login (dipakai di DetailAlatPage dan halaman lain).
 User? registeredUser;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // AKUN DEFAULT (biar bisa langsung login tanpa daftar dulu).
-  registeredUser = User(
-    nama: 'Revaliza',
-    email: 'admin@gmail.com',
-    nomorHp: '081234567890',
-    password: '123456',
-  );
-
   runApp(const PinjamAlatApp());
 }
 
