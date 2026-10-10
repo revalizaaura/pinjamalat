@@ -40,7 +40,7 @@ gambar:
 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
 ),
 AlatElektronik(
-nama: 'Headset',
+nama: 'Earphone',
 kategori: 'Audio',
 harga: 20000,
 gambar:
