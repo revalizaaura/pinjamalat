@@ -212,7 +212,7 @@ class _DetailAlatPageState extends State<DetailAlatPage> {
                   SizedBox(
                     width: double.infinity,
                     height: 300,
-                    child: Image.network(
+                    child: Image.asset(
                       alat.gambar,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {

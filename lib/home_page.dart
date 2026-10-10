@@ -515,7 +515,7 @@ fontWeight: FontWeight.bold,
                   Expanded(
                     child: SizedBox(
                       width: double.infinity,
-                      child: Image.network(
+                      child: Image.asset(
                         item.gambar,
                         fit: BoxFit.cover,
                         errorBuilder:
