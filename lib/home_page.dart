@@ -418,7 +418,7 @@ fontWeight: FontWeight.bold,
                       SizedBox(
                         height: 145,
                         width: double.infinity,
-                        child: Image.network(
+                        child: Image.asset(
                           item.gambar,
                           fit: BoxFit.cover,
                           errorBuilder:
@@ -686,7 +686,7 @@ return SingleChildScrollView(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14),
-                    child: Image.network(
+                    child: Image.asset(
                       peminjaman.alat.gambar,
                       width: 130,
                       height: 110,
